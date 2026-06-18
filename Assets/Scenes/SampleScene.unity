@@ -427,9 +427,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2030737475908603000, guid: 88c962c220fdb2341ab1f0fa1a68f9bb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2835655516622961947, guid: 88c962c220fdb2341ab1f0fa1a68f9bb, type: 3}
       propertyPath: m_Name
       value: ExampleCharacter (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835655516622961947, guid: 88c962c220fdb2341ab1f0fa1a68f9bb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961433462345374273, guid: 88c962c220fdb2341ab1f0fa1a68f9bb, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5620729045516829430, guid: 88c962c220fdb2341ab1f0fa1a68f9bb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -471,6 +483,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5994553184126981909, guid: 88c962c220fdb2341ab1f0fa1a68f9bb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6445967079707869890, guid: 88c962c220fdb2341ab1f0fa1a68f9bb, type: 3}
       propertyPath: MaxAirMoveSpeed
       value: 5
@@ -491,6 +507,14 @@ PrefabInstance:
       propertyPath: 'IgnoredColliders.Array.data[0]'
       value: 
       objectReference: {fileID: 1613519906}
+    - target: {fileID: 6821647024352286105, guid: 88c962c220fdb2341ab1f0fa1a68f9bb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7053211982162895461, guid: 88c962c220fdb2341ab1f0fa1a68f9bb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -540,7 +564,7 @@ GameObject:
   - component: {fileID: 755734473}
   - component: {fileID: 755734476}
   - component: {fileID: 755734475}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +580,7 @@ Transform:
   m_GameObject: {fileID: 755734472}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05139017, y: -0.026000023, z: 0}
+  m_LocalPosition: {x: 0, y: -0.026000023, z: 0}
   m_LocalScale: {x: 0.048491232, y: 0.08935479, z: 0.048491232}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -903,7 +927,7 @@ GameObject:
   - component: {fileID: 1208233506}
   - component: {fileID: 1208233509}
   - component: {fileID: 1208233508}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,9 +942,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208233505}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.037754435, y: 0.1696884, z: 0.037754435}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0.0027, z: 0.052}
+  m_LocalScale: {x: 0.0377, y: 0.03775444, z: 0.169}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1613519905}
@@ -1095,6 +1119,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2125922853}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1321608592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1321608593}
+  m_Layer: 7
+  m_Name: Fire point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1321608593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321608592}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0007, y: 0.0047, z: 0.1602}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1613519905}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1607802671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1162,7 +1217,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1613519905}
   - component: {fileID: 1613519906}
-  m_Layer: 0
+  - component: {fileID: 1613519907}
+  m_Layer: 7
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1177,15 +1233,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613519904}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.147, y: -0.196, z: 0.485}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 755734473}
   - {fileID: 1208233506}
+  - {fileID: 1321608593}
   m_Father: {fileID: 330585546}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1613519906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1207,6 +1264,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15, y: 0.10531045, z: 0.06793766}
   m_Center: {x: -4.8711446e-10, y: -0.026726592, z: 0.0041212128}
+--- !u!114 &1613519907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613519904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3779aae89b70c3b489317480bf687b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShootingWeapon
+  bulletPrefab: {fileID: 8804302451670770863, guid: 52047ae0e6e33f842acc1fb848a07437, type: 3}
+  firePoint: {fileID: 1321608593}
+  bulletSpeed: 20
 --- !u!1 &1830540551
 GameObject:
   m_ObjectHideFlags: 0
