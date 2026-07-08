@@ -5,14 +5,14 @@ public class ShootingWeapon : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float bulletSpeed = 20f;
-    void Update()
+    void LateUpdate()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    Shoot();
+        //}
     }
-    void Shoot()
+    public void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();

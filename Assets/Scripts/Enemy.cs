@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamagable
 {
     RagdollEnabler ragdollEnabler;
+    bool isDead = false;
 
     private void Awake()
     {
@@ -10,8 +11,10 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void OnHit()
+    public void TakeDamage(int damage)
     {
+        if (isDead) return;
         ragdollEnabler.EnableRagdoll();
+        isDead = true;
     }
 }

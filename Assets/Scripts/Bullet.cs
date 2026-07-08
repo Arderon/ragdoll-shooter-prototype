@@ -4,12 +4,13 @@ using System.Collections;
 public class Bullet : MonoBehaviour
 {
     public GameObject hitVFX;
-    private string enemyLayerName = "Enemy";
-    private int enemyLayerMask;
+    [SerializeField] int damage = 10;
+    private string damagableLayerName = "Damagable";
+    private int damagableLayerMask;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
-        enemyLayerMask = LayerMask.NameToLayer(enemyLayerName);
+        damagableLayerMask = LayerMask.NameToLayer(damagableLayerName);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -18,14 +19,14 @@ public class Bullet : MonoBehaviour
         GameObject vfx = Instantiate(hitVFX);
         vfx.transform.position = collision.contacts[0].point;
         vfx.transform.rotation = Quaternion.LookRotation(-transform.forward);
-        if (collision.gameObject.layer == enemyLayerMask)
+        if (collision.gameObject.layer == damagableLayerMask)
         {
-            Enemy enemy = FindEnemyComponent(collision.gameObject);
-            if (enemy != null)
+            IDamagable damagable = FindDamagableComponent(collision.gameObject);
+            if (damagable != null)
             {
-                enemy.OnHit();
+                damagable.TakeDamage(damage);
             }
-            StartCoroutine(WaitAndDestroy(0.1f));
+            StartCoroutine(WaitAndDestroy(0.01f));
         }
         else
         {
@@ -35,18 +36,18 @@ public class Bullet : MonoBehaviour
         //Destroy(gameObject);
     }
 
-    private Enemy FindEnemyComponent(GameObject obj)
+    private IDamagable FindDamagableComponent(GameObject obj)
     {
-        Enemy enemy = null;
+        IDamagable damagable = null;
         Transform currentTransform = obj.transform;
-        while (enemy == null)
+        while (damagable == null)
         {
             Debug.Log(currentTransform.gameObject.name);
-            enemy = currentTransform.GetComponent<Enemy>();
-            if (enemy || currentTransform.parent == null) break;
+            damagable = currentTransform.GetComponent<IDamagable>();
+            if (damagable != null || currentTransform.parent == null) break;
             currentTransform = currentTransform.parent;
         }
-        return enemy;
+        return damagable;
     }
 
     IEnumerator WaitAndDestroy(float seconds)

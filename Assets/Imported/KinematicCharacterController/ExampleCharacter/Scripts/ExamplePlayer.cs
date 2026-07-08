@@ -10,6 +10,7 @@ namespace KinematicCharacterController.Examples
     {
         public ExampleCharacterController Character;
         public ExampleCharacterCamera CharacterCamera;
+        public ShootingWeapon weapon;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
@@ -37,6 +38,7 @@ namespace KinematicCharacterController.Examples
             }
 
             HandleCharacterInput();
+
         }
 
         private void LateUpdate()
@@ -91,6 +93,7 @@ namespace KinematicCharacterController.Examples
             characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
             characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
             characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
+            characterInputs.ShootDown = Input.GetButtonDown("Fire1");
 
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);
