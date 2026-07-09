@@ -4,7 +4,8 @@ using System.Collections;
 public class Bullet : MonoBehaviour
 {
     public GameObject hitVFX;
-    [SerializeField] int damage = 10;
+    private ShootingWeapon weapon;
+    private int damage = 0;
     private string damagableLayerName = "Damagable";
     private int damagableLayerMask;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,6 +35,11 @@ public class Bullet : MonoBehaviour
         }
         
         //Destroy(gameObject);
+    }
+
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
     }
 
     private IDamagable FindDamagableComponent(GameObject obj)

@@ -4,9 +4,10 @@ using System;
 public class DestroyableProp : MonoBehaviour, IDestroyable, IDamagable
 {
     [SerializeField] Transform destroyableParent;
+    [SerializeField] int _maxHealth;
+    [SerializeField] float scatterPartsMultiplier;
 
     int _health;
-    int _maxHealth;
     private bool _destroyed = false;
 
     private int Health
@@ -26,6 +27,11 @@ public class DestroyableProp : MonoBehaviour, IDestroyable, IDamagable
         }
     }
 
+    public void Awake()
+    {
+        _health = _maxHealth;
+    }
+
     public void Start()
     {
         DisablePartsPhisics(destroyableParent);
@@ -38,6 +44,7 @@ public class DestroyableProp : MonoBehaviour, IDestroyable, IDamagable
         if (rb != null) rb.isKinematic = true;
         if (coll != null) coll.enabled = false;
         EnablePartsPhisics(destroyableParent);
+        ScatterParts(destroyableParent, scatterPartsMultiplier);
         _destroyed = true;
     }
 
@@ -46,7 +53,7 @@ public class DestroyableProp : MonoBehaviour, IDestroyable, IDamagable
         Health -= damage;
     }
 
-    public void DisablePartsPhisics(Transform parent)
+    private void DisablePartsPhisics(Transform parent)
     {
         foreach (Transform child in parent)
         {
@@ -57,7 +64,7 @@ public class DestroyableProp : MonoBehaviour, IDestroyable, IDamagable
         }
     }
 
-    public void EnablePartsPhisics(Transform parent)
+    private void EnablePartsPhisics(Transform parent)
     {
         foreach(Transform child in parent)
         {
@@ -65,6 +72,17 @@ public class DestroyableProp : MonoBehaviour, IDestroyable, IDamagable
             Collider coll = child.GetComponent<Collider>();
             if (rb != null) rb.isKinematic = false;
             if (coll != null) coll.enabled = true;
+        }
+    }
+
+    private void ScatterParts(Transform parent, float scatterMultiplier)
+    {
+        foreach (Transform child in parent)
+        {
+            Rigidbody rb = child.GetComponent<Rigidbody>();
+            float force = UnityEngine.Random.Range(0.0f, 1.0f) * scatterMultiplier;
+            Vector3 vector = force * new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f));
+            rb.AddForce(vector, ForceMode.Impulse);
         }
     }
 }
