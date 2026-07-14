@@ -82,6 +82,11 @@ namespace KinematicCharacterController.Examples
             }
         }
 
+        public void DropItem()
+        {
+            Debug.Log("Droping Item");
+        }
+
         private void HandleCharacterInput()
         {
             PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
@@ -93,7 +98,16 @@ namespace KinematicCharacterController.Examples
             characterInputs.JumpDown = Input.GetKeyDown(KeyCode.Space);
             characterInputs.CrouchDown = Input.GetKeyDown(KeyCode.C);
             characterInputs.CrouchUp = Input.GetKeyUp(KeyCode.C);
-            characterInputs.ShootDown = Input.GetButtonDown("Fire1");
+
+
+            if (Input.GetButtonDown("Fire1")) 
+            {
+                Character.AfterCharacterMove += weapon.Shoot;
+            }
+            if (Input.GetButtonDown("DropItem"))
+            {
+                Character.AfterCharacterMove += DropItem;
+            }
 
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);

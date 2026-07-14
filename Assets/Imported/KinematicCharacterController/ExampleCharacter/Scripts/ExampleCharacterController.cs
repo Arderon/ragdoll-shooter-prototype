@@ -25,7 +25,6 @@ namespace KinematicCharacterController.Examples
         public bool JumpDown;
         public bool CrouchDown;
         public bool CrouchUp;
-        public bool ShootDown;
     }
 
     public struct AICharacterInputs
@@ -63,9 +62,6 @@ namespace KinematicCharacterController.Examples
         public float JumpPreGroundingGraceTime = 0f;
         public float JumpPostGroundingGraceTime = 0f;
 
-        [Header("Weapon")]
-        public ShootingWeapon weapon;
-
         [Header("Misc")]
         public List<Collider> IgnoredColliders = new List<Collider>();
         public BonusOrientationMethod BonusOrientationMethod = BonusOrientationMethod.None;
@@ -76,6 +72,8 @@ namespace KinematicCharacterController.Examples
         public float CrouchedCapsuleHeight = 1f;
 
         public CharacterState CurrentCharacterState { get; private set; }
+
+        public Action AfterCharacterMove;
 
         private Collider[] _probedColliders = new Collider[8];
         private RaycastHit[] _probedHits = new RaycastHit[8];
@@ -89,7 +87,6 @@ namespace KinematicCharacterController.Examples
         private Vector3 _internalVelocityAdd = Vector3.zero;
         private bool _shouldBeCrouching = false;
         private bool _isCrouching = false;
-        private bool _fireRequested = false;
 
         private Vector3 lastInnerNormal = Vector3.zero;
         private Vector3 lastOuterNormal = Vector3.zero;
@@ -197,11 +194,6 @@ namespace KinematicCharacterController.Examples
                         else if (inputs.CrouchUp)
                         {
                             _shouldBeCrouching = false;
-                        }
-
-                        if (inputs.ShootDown)
-                        {
-                            _fireRequested = true;
                         }
 
                         break;
@@ -455,11 +447,8 @@ namespace KinematicCharacterController.Examples
                             }
                         }
 
-                        if (_fireRequested)
-                        {
-                            weapon.Shoot();
-                            _fireRequested = false;
-                        }
+                        AfterCharacterMove?.Invoke();
+                        AfterCharacterMove = null;
                         break;
                     }
             }
