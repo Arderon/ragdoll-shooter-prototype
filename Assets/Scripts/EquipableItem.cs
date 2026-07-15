@@ -1,5 +1,6 @@
 using UnityEngine;
 
-public class EquipableItem : MonoBehaviour
+public abstract class EquipableItem : MonoBehaviour
 {
+    public abstract void Use();
 }

@@ -10,13 +10,15 @@ namespace KinematicCharacterController.Examples
     {
         public ExampleCharacterController Character;
         public ExampleCharacterCamera CharacterCamera;
-        public ShootingWeapon weapon;
+        public EquipManager EquipManager;
 
         private const string MouseXInput = "Mouse X";
         private const string MouseYInput = "Mouse Y";
         private const string MouseScrollInput = "Mouse ScrollWheel";
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
+
+        private const int _equipableLayer = 10;
 
         private void Start()
         {
@@ -102,7 +104,7 @@ namespace KinematicCharacterController.Examples
 
             if (Input.GetButtonDown("Fire1")) 
             {
-                Character.AfterCharacterMove += weapon.Shoot;
+                Character.AfterCharacterMove += EquipManager.UseItem;
             }
             if (Input.GetButtonDown("DropItem"))
             {
@@ -111,6 +113,15 @@ namespace KinematicCharacterController.Examples
 
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);
+        }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            if(other.gameObject.layer == _equipableLayer)
+            {
+                EquipableItem item = other.GetComponent<EquipableItem>();
+                EquipManager.EquipItem(item);
+            }
         }
     }
 }
