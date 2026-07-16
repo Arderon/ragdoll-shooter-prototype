@@ -115,6 +115,7 @@ namespace KinematicCharacterController.Examples
             if(other.gameObject.layer == _equipableLayer)
             {
                 EquipableItem item = other.GetComponent<EquipableItem>();
+                if(item == null) return;
                 EquipManager.EquipItem(item);
             }
         }
