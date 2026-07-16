@@ -84,6 +84,12 @@ namespace KinematicCharacterController.Examples
             }
         }
 
+        public void DropItem()
+        {
+            Debug.Log("Droping Item");
+            Debug.Log("Very important");
+        }
+
         private void HandleCharacterInput()
         {
             PlayerCharacterInputs characterInputs = new PlayerCharacterInputs();
@@ -103,14 +109,14 @@ namespace KinematicCharacterController.Examples
             }
             if (Input.GetButtonDown("DropItem"))
             {
-                Character.AfterCharacterMove += EquipManager.DropItem;
+                Character.AfterCharacterMove += DropItem;
             }
 
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);
         }
 
-        public void OnTriggerStay(Collider other)
+        public void OnTriggerEnter(Collider other)
         {
             if(other.gameObject.layer == _equipableLayer)
             {
