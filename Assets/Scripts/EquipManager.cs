@@ -30,6 +30,7 @@ public class EquipManager : MonoBehaviour
     public void DropItem()
     {
         Debug.Log(currentItem.name + "droped");
+        Console.WriteLine("Absdb");
     }
 
     public void UseItem()

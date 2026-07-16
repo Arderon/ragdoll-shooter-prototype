@@ -87,6 +87,7 @@ namespace KinematicCharacterController.Examples
         public void DropItem()
         {
             Debug.Log("Droping Item");
+            Debug.Log("Very important");
         }
 
         private void HandleCharacterInput()
