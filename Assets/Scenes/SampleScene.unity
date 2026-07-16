@@ -3301,7 +3301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EquipManager
   handsTransform: {fileID: 1286624300}
-  sceneEquipablesTransform: {fileID: 1505872070}
+  sceneEquipablesTransform: {fileID: 0}
   HasItem: 0
 --- !u!4 &1595025583
 Transform:
@@ -3366,7 +3366,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112

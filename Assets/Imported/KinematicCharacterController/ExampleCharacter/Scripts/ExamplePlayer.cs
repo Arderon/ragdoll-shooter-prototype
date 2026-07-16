@@ -118,5 +118,14 @@ namespace KinematicCharacterController.Examples
                 EquipManager.EquipItem(item);
             }
         }
+
+        public void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.layer == _equipableLayer)
+            {
+                EquipableItem item = collision.gameObject.GetComponent<EquipableItem>();
+                EquipManager.EquipItem(item);
+            }
+        }
     }
 }
