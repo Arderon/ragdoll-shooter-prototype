@@ -5,6 +5,7 @@ using static UnityEditor.Progress;
 public class EquipManager : MonoBehaviour
 {
     [SerializeField] Transform handsTransform;
+    [SerializeField] Transform sceneEquipablesTransform;
     public bool HasItem = false;
     private EquipableItem currentItem;
 
@@ -13,24 +14,34 @@ public class EquipManager : MonoBehaviour
 
     public void EquipItem(EquipableItem item)
     {
-        if (HasItem) 
+        if (!item.CanBeEquiped())
         {
-            Debug.Log("Already has equiped item");
             return;
         }
+
+        if (HasItem) 
+        {
+            return;
+        }
+
         Debug.Log(item.name + "equiped");
-        HasItem = true;
         item.transform.parent = handsTransform;
         item.transform.localPosition = Vector3.zero;
         item.transform.localRotation = Quaternion.identity;
+        item.OnEquip();
         currentItem = item;
+        HasItem = true;
         OnItemEquip?.Invoke();
     }
 
     public void DropItem()
     {
         Debug.Log(currentItem.name + "droped");
-        Console.WriteLine("Absdb");
+        currentItem.transform.parent = sceneEquipablesTransform;
+        currentItem.OnDrop(); 
+        currentItem = null;
+        HasItem = false;
+        OnItemDrop?.Invoke();
     }
 
     public void UseItem()
