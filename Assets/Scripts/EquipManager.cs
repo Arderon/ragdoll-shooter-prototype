@@ -12,6 +12,8 @@ public class EquipManager : MonoBehaviour
     public Action OnItemEquip;
     public Action OnItemDrop;
 
+    [SerializeField] float dropForce = 200f;
+
     public void EquipItem(EquipableItem item)
     {
         if (!item.CanBeEquiped())
@@ -38,10 +40,22 @@ public class EquipManager : MonoBehaviour
     {
         Debug.Log(currentItem.name + "droped");
         currentItem.transform.parent = sceneEquipablesTransform;
-        currentItem.OnDrop(); 
+        currentItem.OnDrop();
+        ThrowObj(currentItem.gameObject, dropForce);
         currentItem = null;
         HasItem = false;
         OnItemDrop?.Invoke();
+    }
+
+    public void ThrowObj(GameObject obj, float throwForce)
+    {
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        if(rb == null)
+        {
+            Debug.Log("Cant throw. Rb is null");
+        }
+        Vector3 force = handsTransform.forward * throwForce;
+        rb.AddForce(force);
     }
 
     public void UseItem()

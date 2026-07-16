@@ -7,17 +7,20 @@ using UnityEngine.UIElements;
 public abstract class EquipableItem : MonoBehaviour
 {
     private bool _isEquiped = false;
+    private bool _phisicsEnabled = false;
     private float _timer = 0f;
     private const float _timeTillPickUp = 1f;
     private Rigidbody _rb;
-    private Collider _col;
-    private bool _phisicsEnabled = false;
+    
+    [SerializeField] Collider _phisicsCollider;
+    [SerializeField] Collider _triggerCollider;
+    
     public abstract void Use();
 
     public void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _col = GetComponent<Collider>();
+        _phisicsCollider = GetComponent<Collider>();
     }
 
     private void Start()
@@ -53,15 +56,17 @@ public abstract class EquipableItem : MonoBehaviour
     private void DisablePhisics()
     {
         _rb.isKinematic = true;
-        _col.isTrigger = true;
+        _phisicsCollider.isTrigger = true;
         _phisicsEnabled = false;
+        _triggerCollider.enabled = false;
     }
 
     private void EnablePhisics()
     {
         _rb.isKinematic = false;
-        _col.isTrigger = false;
+        _phisicsCollider.isTrigger = false;
         _phisicsEnabled = true;
+        _triggerCollider.enabled = true;
     }
 
     private void Update()

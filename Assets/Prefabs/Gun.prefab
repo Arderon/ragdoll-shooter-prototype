@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8737495895056818671}
   - component: {fileID: 1788574884716210679}
   - component: {fileID: 6203206983238332438}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 7149827839558738680}
   - component: {fileID: 8601671763957702024}
   - component: {fileID: 7273519718867045089}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4811096283856794031}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Fire point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,8 +221,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3853124930843355632}
   - component: {fileID: 762471901489609662}
+  - component: {fileID: 1480207224532798256}
   - component: {fileID: 7701315202796418266}
-  m_Layer: 7
+  - component: {fileID: 906275423154107150}
+  m_Layer: 10
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,14 +262,41 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.15, y: 0.10531045, z: 0.06793766}
-  m_Center: {x: -4.8711446e-10, y: -0.026726592, z: 0.0041212128}
+  m_Size: {x: 0.091264494, y: 0.10531044, z: 0.18830727}
+  m_Center: {x: 0.002754724, y: -0.026726453, z: 0.064305946}
+--- !u!54 &1480207224532798256
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826563665219642017}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &7701315202796418266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,5 +309,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3779aae89b70c3b489317480bf687b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShootingWeapon
-  firePoint: {fileID: 4811096283856794031}
+  _phisicsCollider: {fileID: 762471901489609662}
+  _triggerCollider: {fileID: 906275423154107150}
   weaponData: {fileID: 11400000, guid: 78054c6a73c43544d8130eb0a936e234, type: 2}
+  firePoint: {fileID: 4811096283856794031}
+--- !u!65 &906275423154107150
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826563665219642017}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
