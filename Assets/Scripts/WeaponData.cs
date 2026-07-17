@@ -12,6 +12,6 @@ public class WeaponData : ScriptableObject
     [Header("Range Weapon")]
     public GameObject ProjectilePrefab;
     public float ProjectileSpeed;
-    public int Magazine;
+    public int MagazineCapacity;
     public int ReloadTime;
 }

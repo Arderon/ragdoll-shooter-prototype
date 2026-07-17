@@ -19,5 +19,5 @@ MonoBehaviour:
   IsRange: 0
   ProjectilePrefab: {fileID: 8804302451670770863, guid: 52047ae0e6e33f842acc1fb848a07437, type: 3}
   ProjectileSpeed: 20
-  Magazine: 0
-  ReloadTime: 0
+  MagazineCapacity: 10
+  ReloadTime: 2
