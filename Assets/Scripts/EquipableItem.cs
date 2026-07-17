@@ -69,7 +69,7 @@ public abstract class EquipableItem : MonoBehaviour
         _triggerCollider.enabled = true;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         _timer -= Time.deltaTime;
     }
