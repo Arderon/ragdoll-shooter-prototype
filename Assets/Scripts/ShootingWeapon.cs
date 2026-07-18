@@ -7,7 +7,7 @@ public class ShootingWeapon : Weapon
     private float _reloadTimer = 0;
     private float _attackTimer = 0;
 
-    private new void Awake()
+    protected new void Awake()
     {
         base.Awake();
         _currentAmmo = weaponData.MagazineCapacity;
@@ -20,18 +20,23 @@ public class ShootingWeapon : Weapon
         _attackTimer -= Time.deltaTime;
     }
 
-    private void Shoot()
+    protected virtual void Shoot()
     {
-        GameObject bullet = Instantiate(weaponData.ProjectilePrefab, firePoint.position, firePoint.rotation);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.linearVelocity = firePoint.forward * weaponData.ProjectileSpeed;
-        bullet.GetComponent<Bullet>().SetDamage(weaponData.BaseDamage);
+        for(int i = 0; i < weaponData.ProjectilesPerShoot; i++)
+        {
+            Quaternion rotation = GetSpreadRotation(firePoint.rotation);
+            GameObject bullet = Instantiate(weaponData.ProjectilePrefab, firePoint.position, rotation);
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            rb.linearVelocity = bullet.transform.forward * weaponData.ProjectileSpeed;
+            bullet.GetComponent<Bullet>().SetDamage(weaponData.BaseDamage);
+        }
+  
         _currentAmmo--;
         _attackTimer = weaponData.BaseAttackSpeed;
         Debug.Log(_currentAmmo);
     }
 
-    private void TryShoot()
+    protected void TryShoot()
     {
         if (_currentAmmo > 0 && _reloadTimer <= 0 && _attackTimer <= 0)
         {
@@ -51,10 +56,20 @@ public class ShootingWeapon : Weapon
         }
     }
 
-    private void Reload()
+    protected void Reload()
     {
         _reloadTimer = weaponData.ReloadTime;
         _currentAmmo = weaponData.MagazineCapacity;
+    }
+
+    protected Quaternion GetSpreadRotation(Quaternion originalRotation)
+    {
+        float randomX = Random.Range(-weaponData.SpreadY, weaponData.SpreadY);
+        float randomY = Random.Range(-weaponData.SpreadX, weaponData.SpreadX);
+
+        Quaternion spreadRotation = Quaternion.Euler(randomX, randomY, 0f);
+
+        return originalRotation * spreadRotation;
     }
 
     public override void Use()
