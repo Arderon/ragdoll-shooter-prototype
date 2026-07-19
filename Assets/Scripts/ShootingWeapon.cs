@@ -6,6 +6,8 @@ public class ShootingWeapon : Weapon
     private int _currentAmmo;
     private float _reloadTimer = 0;
     private float _attackTimer = 0;
+    private bool _holdingShoot = false;
+    private bool _shootRequested = false;
 
     protected new void Awake()
     {
@@ -18,6 +20,14 @@ public class ShootingWeapon : Weapon
         base.Update();
         _reloadTimer -= Time.deltaTime;
         _attackTimer -= Time.deltaTime;
+        if (weaponData.IsAutomatic)
+        {
+            if (_shootRequested)
+            {
+                TryShoot();
+            }
+        }
+        
     }
 
     protected virtual void Shoot()
@@ -40,19 +50,43 @@ public class ShootingWeapon : Weapon
     {
         if (_currentAmmo > 0 && _reloadTimer <= 0 && _attackTimer <= 0)
         {
-            Shoot();
+            if (weaponData.IsAutomatic)
+            {
+                if (_holdingShoot)
+                {
+                    Shoot();
+                    _shootRequested = true;
+                }
+                else
+                {
+                    _shootRequested = false;
+                }
+
+            }
+            else
+            {
+                Shoot();
+            }
         }
         else if (_reloadTimer > 0)
         {
-            
+            _shootRequested = false;
         }
         else if (_attackTimer > 0)
         {
+            if (weaponData.IsAutomatic)
+            {
+                if (_holdingShoot)
+                {
+                    _shootRequested = true;
+                }
 
+            }
         }
         else
         {
             Reload();
+            _shootRequested = false;
         }
     }
 
@@ -74,6 +108,13 @@ public class ShootingWeapon : Weapon
 
     public override void Use()
     {
+        if (_shootRequested) return;
+        _holdingShoot = true;
         TryShoot();
+    }
+
+    public override void StopUse()
+    {
+        _holdingShoot = false;
     }
 }

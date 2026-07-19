@@ -1,13 +1,8 @@
 using UnityEngine;
 
-public class Shotgun : MonoBehaviour
+public class Shotgun : ShootingWeapon
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
+    protected override void Shoot()
     {
         
     }

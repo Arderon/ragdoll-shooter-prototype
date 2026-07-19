@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85bdbc151792c3a46a9d00c43146ae36, type: 3}
-  m_Name: WeaponData
+  m_Name: Riffle
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   Name: 
   BaseDamage: 0
-  BaseAttackSpeed: 0.5
+  BaseAttackSpeed: 0.15
   Icon: {fileID: 0}
   IsRange: 0
-  IsAutomatic: 0
+  IsAutomatic: 1
   ProjectilePrefab: {fileID: 8804302451670770863, guid: 52047ae0e6e33f842acc1fb848a07437, type: 3}
   ProjectileSpeed: 10
-  MagazineCapacity: 10
+  MagazineCapacity: 30
   ReloadTime: 2
   ProjectilesPerShoot: 1
   ProjectilesPerRound: 1
-  SpreadX: 0
-  SpreadY: 0
+  SpreadX: 3
+  SpreadY: 3

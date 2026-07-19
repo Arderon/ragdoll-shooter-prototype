@@ -16,6 +16,7 @@ public abstract class EquipableItem : MonoBehaviour
     [SerializeField] Collider _triggerCollider;
     
     public abstract void Use();
+    public abstract void StopUse();
 
     public void Awake()
     {

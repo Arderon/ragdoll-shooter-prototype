@@ -105,6 +105,10 @@ namespace KinematicCharacterController.Examples
             {
                 Character.AfterCharacterMove += EquipManager.DropItem;
             }
+            if (Input.GetButtonUp("Fire1"))
+            {
+                Character.AfterCharacterMove += EquipManager.StopUse;
+            }
 
             // Apply inputs to character
             Character.SetInputs(ref characterInputs);

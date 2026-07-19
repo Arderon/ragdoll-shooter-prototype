@@ -8,6 +8,7 @@ public class WeaponData : ScriptableObject
     public float BaseAttackSpeed = 0.5f;
     public Sprite Icon;
     public bool IsRange;
+    public bool IsAutomatic;
 
     [Header("Range Weapon")]
     public GameObject ProjectilePrefab;
@@ -17,5 +18,5 @@ public class WeaponData : ScriptableObject
     public int ProjectilesPerShoot = 1;
     public int ProjectilesPerRound = 1;
     public float SpreadX = 0f;    
-    public float SpreadY = 0f;    
+    public float SpreadY = 0f;
 }

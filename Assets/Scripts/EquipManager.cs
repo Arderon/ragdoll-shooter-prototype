@@ -65,4 +65,12 @@ public class EquipManager : MonoBehaviour
             currentItem.Use();
         } 
     }
+
+    public void StopUse()
+    {
+        if (currentItem != null)
+        {
+            currentItem.StopUse();
+        }
+    }
 }
