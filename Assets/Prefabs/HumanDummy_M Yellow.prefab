@@ -339,7 +339,7 @@ PrefabInstance:
       addedObject: {fileID: 8676744070531437777}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d9cd8eb4a074cd84ab2686c58bcf21d9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8094734207110468814}
+      addedObject: {fileID: 3148977625294756118}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d9cd8eb4a074cd84ab2686c58bcf21d9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1278357228501224346}
@@ -911,7 +911,7 @@ MonoBehaviour:
   StartRagdoll: 0
   animationModeCollider: {fileID: 1278357228501224346}
   Rigidbodies: []
---- !u!114 &8094734207110468814
+--- !u!114 &3148977625294756118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -920,9 +920,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2153708246852779657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d34a27f3ba48e5540bfe83c3a4dd0b14, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d0145cc70ecec649a2438f6635c5a0c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
 --- !u!136 &1278357228501224346
 CapsuleCollider:
   m_ObjectHideFlags: 0
